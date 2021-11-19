@@ -1,0 +1,54 @@
+﻿@page
+@model MyWebApp01.Pages.Data.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Timesheet[0].empid)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Timesheet[0].empname)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Timesheet[0].changedate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Timesheet[0].task)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Timesheet) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.empid)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.empname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.changedate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.task)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.id">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.id">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
